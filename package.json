@@ -1,6 +1,5 @@
 {
   "name": "movie-browser",
-  "homepage": "https://alinebsr.github.io/movieBrowser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
