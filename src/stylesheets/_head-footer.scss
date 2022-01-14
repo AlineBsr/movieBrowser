@@ -1,0 +1,26 @@
+
+.app-header{
+    display:flex;
+    flex-direction: row;
+    img{
+        width: 5rem;
+    }    
+}
+
+.app-footer{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    // margin:4px;
+    padding-top: 1rem;    
+    & img {
+        margin-bottom: -5px;
+        width:3rem;
+    }
+    & p {
+        display:flex;
+        font-size: 0.7rem;
+
+    }
+}

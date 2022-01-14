@@ -1,0 +1,32 @@
+.card-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    // justify-content: space-between;
+
+    
+    & .card-content{
+        width:50%;
+        // display: flex;
+
+        // justify-content: space-between;
+        // width: 40%;  
+        // font-size: 1em; 
+    }
+
+& h1 {
+        position: absolute;
+        // display: flex;
+        font-size: 1em; 
+        background-color: rgba(221, 221, 221, 0.432);
+        flex-wrap: no-wrap;
+        width:30%;
+
+        }
+        
+        img{ 
+            // width: 50%;
+        }
+            
+}

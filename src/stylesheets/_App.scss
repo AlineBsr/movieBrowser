@@ -1,0 +1,10 @@
+body{
+  background-color:#15141f;
+  color: white;
+  width:100%;
+  
+  & li, a, a :visited {
+    color:#ff8f71;
+    text-decoration: none;
+  }           
+}

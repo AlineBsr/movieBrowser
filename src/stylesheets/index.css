@@ -1,0 +1,129 @@
+body {
+  background-color: #15141f;
+  color: white;
+  width: 100%;
+}
+body li, body a, body a :visited {
+  color: #ff8f71;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.movies-container {
+  display: flex;
+  flex-direction: column;
+}
+.movies-container a {
+  flex-direction: column;
+}
+.movies-container .box {
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card-container .card-content {
+  width: 50%;
+}
+.card-container h1 {
+  position: absolute;
+  font-size: 1em;
+  background-color: rgba(221, 221, 221, 0.432);
+  flex-wrap: no-wrap;
+  width: 30%;
+}
+.details-container {
+  margin: 1rem;
+  display: flex;
+  text-align: justify;
+}
+.details-container header {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+}
+.details-container header h1 {
+  text-transform: uppercase;
+}
+.details-container header img {
+  width: 20em;
+  border-radius: 2rem;
+  text-align: center;
+}
+.details-container header .details-content {
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+}
+.details-container header .details-content .genre {
+  justify-content: flex-start;
+}
+.details-container header .details-content p {
+  color: grey;
+  flex-direction: row;
+}
+.details-container header .details-content h2 {
+  color: white;
+  margin-bottom: -10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.details-container header ul {
+  display: flex;
+}
+.details-container header ul li {
+  color: red;
+  justify-content: space-around;
+  text-decoration: none;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: row;
+}
+.app-header img {
+  width: 5rem;
+}
+
+.app-footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+.app-footer img {
+  margin-bottom: -5px;
+  width: 3rem;
+}
+.app-footer p {
+  display: flex;
+  font-size: 0.7rem;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
