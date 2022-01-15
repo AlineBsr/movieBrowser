@@ -3,12 +3,11 @@ import Header from './Header';
 import Cards from "./Cards";
 
 // tendances films
-const Home = (props)  => {
-
+const Home = ()  => {
   const [ trends, setTrends ] = useState([]);
-  const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_APIKEY}`;
 
   const getTrends = () => {
+    const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_APIKEY}`;
     console.log(url)
     fetch(url)
     .then( (err) => err.json() )

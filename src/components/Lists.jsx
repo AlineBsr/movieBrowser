@@ -19,19 +19,20 @@ const Lists = (props) => {
   }, []);
 
   return (
-    <>      
+    <div>      
       <Header />
       <h1>Find Movies, Tv series, and more....</h1>
       <br />
+      
       <Search />
-      <div>
+      
+      <div className="lists-categories">
         <a href="/movie">Movies</a>
         <a href="/tv">TvSeries</a>
       </div>
 
-      <Cards type={props.type} datas={movies} />
-      
-    </>
+        <Cards type={props.type} datas={movies} />
+    </div>
   )
 }
 

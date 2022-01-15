@@ -29,10 +29,10 @@ function App() {
                 element={ <Details lang="en" type="tv" /> } 
         /> 
       </Routes>
-    </Router>
 
-    <Nav />
-    <Footer />
+        <Nav />
+        <Footer />
+    </Router>
     </>
   );
 }

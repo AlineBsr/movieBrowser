@@ -1,0 +1,11 @@
+.lists-cards-container {
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+}
+.lists-categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;    
+}
+

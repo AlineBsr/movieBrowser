@@ -1,9 +1,18 @@
-@import '_App.scss';
-@import '_nav.scss';
-@import '_movies.scss';
-@import '_cards.scss';
-@import '_details.scss';
-@import '_head-footer.scss';
+@media only screen and (min-width: 600px) {
+  body {
+    // background-color: lightblue;
+
+    img{ max-width: 50%; }
+    h2{ font-size: 24em;}
+  }
+}
+
+@import './_App.scss';
+@import './_nav.scss';
+@import './_lists.scss';
+@import './_cards.scss';
+@import './_details.scss';
+@import './_head-footer.scss';
 
 body {
   margin: 0;

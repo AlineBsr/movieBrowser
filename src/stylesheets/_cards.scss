@@ -2,31 +2,17 @@
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    // justify-content: space-between;
-
+    justify-content: space-between;
+    margin: 3em;
+    column-rule: 1px solid rgb(75, 70, 74);
+    // column-width: 5em;
     
-    & .card-content{
-        width:50%;
-        // display: flex;
-
-        // justify-content: space-between;
-        // width: 40%;  
-        // font-size: 1em; 
-    }
-
-& h1 {
+    & .card-content h1 {
         position: absolute;
-        // display: flex;
+        color:black;
         font-size: 1em; 
-        background-color: rgba(221, 221, 221, 0.432);
-        flex-wrap: no-wrap;
-        width:30%;
-
-        }
-        
-        img{ 
-            // width: 50%;
-        }
-            
+        background-color: rgba(221, 221, 221, 0.767);
+        max-width:10em;
+        margin: 1em;
+    }            
 }

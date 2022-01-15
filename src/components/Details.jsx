@@ -1,78 +1,85 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router";
 
+import YoutubeEmbed from "./YoutubeEmbed";
+
 const Details = (props) => {
     const { lang, type, ...rest} = props;
-    const [ details, setDetails ] = useState([]);
     const { id } = useParams();
-    const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=${props.lang}&append_to_response=videos,images`;
+    const [ details, setDetails ] = useState([]);
+    const [ displayVideo, setDisplayVideo ] = useState(true)
 
     const getDetails = () => {
+        const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=${props.lang}&append_to_response=videos,images`;
         fetch(url)
         .then( (err) => err.json() )
         .then( (data) => data.errors ? console.error("error") : setDetails( [data] )
     )}
+
+    const displayTrailer = () => {
+        setDisplayVideo(!displayVideo);
+    }
+
     useEffect(() => {
         getDetails();
     }, [])
 
     return (
-        
-        <div>
+        <>
             {details.map( (detail) =>
-
-            <article    key={id} 
-                        className="details-container"
-            >
-                { console.log(detail.videos.results)}
-
-                { detail.videos.results.map( (result) => 
-                result.type === "Trailer" && 
-                    <video width="480" controls>
-                        <source src={`https://www.youtube.com/watch?v=${result.key}`} 
-                                type="video"/>
-
-                        Your browser does not support HTML5 video.
-                    </video>
-                )}
-                <header>
-                    {/* <i className="fas fa-play-circle details-play-button"></i> */}
+            <article key={id} className="details-container">
+                <div className="details-head">
+                    <i className="fas fa-play-circle "></i>
                     <img src={ `https://image.tmdb.org/t/p/w500/${detail.backdrop_path}` }
-                         alt={ `affiche de ${detail.name}` }
-                    />
+                         alt={ `affiche de ${detail.name}` } 
+                         onClick={ () => displayTrailer() }
+                    /> 
+                </div>
 
-                    { type === "tv" ?<h1> {detail.name} </h1> : <h1> {detail.title} </h1> }
-                    <div className="details-content ">
-                        <p><i className="fas fa-clock"></i> {type === "tv" ? detail.episode_run_time: detail.runtime } mins </p>
-                        <p><i className="fas fa-star"> </i> {detail.vote_average} (imDb)</p>
-                        { type === "tv" ? (detail.seasons.length === 1 ? <p>1 season</p> : <p> {detail.seasons.length} seasons </p>) : null }
+                { type === "tv" ? <h1> {detail.name} </h1> : <h1> {detail.title} </h1> }
+
+                {/* VIDEO */}
+                { detail.videos.results.map( (result) => result.type === "Trailer" && 
+                    <div className="video-container" key={result.id} hidden={displayVideo}>
+                        <YoutubeEmbed embedId={result.key} />
                     </div>
+                    )
+                }
+
+                {/* TIME & VOTES  */}
+                <div className="details-content ">
+                    { type !== "tv" && <p><i className="fas fa-clock"></i> {detail.runtime} mins </p> }
+                    <p><i className="fas fa-star"> </i> {detail.vote_average} (imDb)</p>
+                </div>
+
+                {/* GENRE - REL - SEASONS */}
+                <div className="details-content">
+                    <h2> Release date <br/></h2>
+                    <p> { type === "tv" ? detail.last_air_date : detail.release_date}</p>
+                </div>
+                <div className="details-content">
+                    <h2> Genres </h2><br/>
+                    { detail.genres.map( (genre) => <p key={`genre-${genre.id}`} >  {genre.name}  </p> ) }
                     
-                    <div className="details-content genre">
-                        <h2 className="details-subtitle">Genres</h2>
-                        { detail.genres.map( (genre) =>
-                            <p key={`genre-${genre.id}`} >
-                             {genre.name}
-                            </p>
-                        )}
-                        <h2 className="details-subtitle">Release date</h2>
-                        <p>{ type === "tv" ? detail.last_air_date : detail.release_date}</p>
-                    </div>
+                    { type === "tv" && (detail.seasons.length === 1 ? <h2>1 season</h2> : <h2> {detail.seasons.length} seasons </h2>) } 
+                    {/* [ todo ] add function : display details of onClick season(s) */}
+                </div>
 
-                    <div className="details-content ">
-                        <h2 className="details-subtitle">Synopsis</h2>
-                        <p className=""> {detail.overview} </p>
-                    </div>
+                {/* SYNOPSIS */}
+                <div className="details-content ">
+                    <h2> Synopsis </h2>
+                    <p> {detail.overview} </p>
+                </div>
 
-                    <div className="details-content">
-                        <h2 className="details-subtitle">Related movies</h2>
-                    </div>
-
-                </header>
+                {/* REL MOVIE */}
+                <div className="details-content">
+                    <h2 className="details-subtitle">Related movies</h2>
+                </div>
 
             </article>
-            )}
-        </div>
+            )
+        }
+        </>
     )
 }
 

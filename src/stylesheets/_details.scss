@@ -1,50 +1,62 @@
 .details-container {
   margin:1rem;
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   text-align: justify;
-  & header {
-    display:flex;
-    flex-direction: column;
+  & img {
+    display: flex;
+    width: auto;
     max-width: 100%;
-    width:100%;
-    & h1 { text-transform: uppercase; }
-    & img {
-      width:20em;
-      // max-width: 100%;
-      border-radius: 2rem; 
-      text-align: center;
-      // justify-content: center;
-    }
-  & .details-content{
-    & .genre{
-      justify-content: flex-start
-
-
-      }
-    justify-content: flex-start;
+    align-items: center;
+    border-radius: 2rem; 
+  }
+  & .details-content {
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    font-size: 1.1rem;
-      & p { 
-      color: grey;
-      flex-direction: row;
+    align-items: baseline;
+    
+  } 
+  & h2 { 
+    text-transform: uppercase; 
+    color: white;
+    margin-bottom: -10px;
+    font-size: 1em;
+    letter-spacing: 0.3em;
+    justify-content: baseline;
+  } 
+  & p { 
+    font-size: 1.1em;
+    color: grey;
+  }   
+}
 
-     }   
-    & h2 { 
-      color: white;
-      margin-bottom: -10px;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
-  }
-  & ul {
+
+.video-container{  
+  width:80%; 
+}
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+
+.details-play-button {
     display: flex;
-    & li{
-      color:red;
-      justify-content: space-around;
-      text-decoration:none;
-      }
-    }  
-  }
+
+      color: red;
+      display: inline;
+      background-color: yellow;
 }
