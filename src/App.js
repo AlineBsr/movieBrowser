@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useParams } from "react-router";
 
 import Nav      from "./components/Nav";        // nav home - disc - profil 
 import Home     from "./components/Home";       // tendances (movie / tv ...?)
@@ -8,32 +9,37 @@ import Profil   from "./components/Profil";
 import Footer   from "./components/Footer";
 
 function App() {
-  return (  
-    <>
-    <Router>
-      <Routes>
-        <Route  exact path="/" element={ <Home /> } /> 
-        <Route  exact path="/profil"
-                element={ <Profil username="TEST" /> }
-         />
-        <Route  exact path="/movie" 
-                element={ <Lists type="movie" lang="en"  /> }
-        />
-        <Route  exact path="/movie/:id" 
-                element={ <Details lang="en" type="movie"/> }
-        />
-        <Route  exact path="/tv" 
-                element={ <Lists  type="tv"  lang="en"/> } 
-        />
-        <Route  exact path="/tv/:id" 
-                element={ <Details lang="en" type="tv" /> } 
-        /> 
-      </Routes>
+  const { id } = useParams();
 
-        <Nav />
-        <Footer />
-    </Router>
-    </>
+return (  
+  <>
+  <Router>
+    < Routes>
+      <Route  exact path="/" 
+        element={ <Home type="movie" lang="en-US" /> } 
+      /> 
+      <Route  exact path="/profil"
+        element={ <Profil username="TEST" /> }
+      />
+      <Route  exact path="/movie" 
+        element={ <Lists type="movie" lang="en-US"  /> }
+      />
+      <Route  exact path="/movie/:id" 
+        element={ <Details type="movie" lang="en-US" id={id} /> }
+      />
+      <Route  exact path="/tv" 
+        element={ <Lists  type="tv"  lang="en-US"/> } 
+      />
+      <Route  exact path="/tv/:id" 
+        element={ <Details type="tv" lang="en-US" id={id} /> } 
+      /> 
+    </Routes>
+    
+    <Nav />
+    <Footer />
+      
+  </Router>
+  </>
   );
 }
 

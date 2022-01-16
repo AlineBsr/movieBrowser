@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router";
-
 import YoutubeEmbed from "./YoutubeEmbed";
 
 const Details = (props) => {
-    const { lang, type, ...rest} = props;
-    const { id } = useParams();
     const [ details, setDetails ] = useState([]);
-    const [ displayVideo, setDisplayVideo ] = useState(true)
+    const [ displayVideo, setDisplayVideo ] = useState(true);
+    const { lang, type } = props;
+    const { id } = useParams();
 
     const getDetails = () => {
-        const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=${props.lang}&append_to_response=videos,images`;
+        const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=${lang}&append_to_response=videos,images`;
         fetch(url)
         .then( (err) => err.json() )
         .then( (data) => data.errors ? console.error("error") : setDetails( [data] )
@@ -25,8 +24,8 @@ const Details = (props) => {
     }, [])
 
     return (
-        <>
-            {details.map( (detail) =>
+        <div className="details-body">
+        {details.map( (detail) =>
             <article key={id} className="details-container">
                 <div className="details-head">
                     <i className="fas fa-play-circle "></i>
@@ -39,12 +38,14 @@ const Details = (props) => {
                 { type === "tv" ? <h1> {detail.name} </h1> : <h1> {detail.title} </h1> }
 
                 {/* VIDEO */}
+                <div className="video-container">
                 { detail.videos.results.map( (result) => result.type === "Trailer" && 
-                    <div className="video-container" key={result.id} hidden={displayVideo}>
+                <   div  key={result.id} hidden={displayVideo}>
                         <YoutubeEmbed embedId={result.key} />
                     </div>
                     )
                 }
+                </div>
 
                 {/* TIME & VOTES  */}
                 <div className="details-content ">
@@ -74,13 +75,16 @@ const Details = (props) => {
                 {/* REL MOVIE */}
                 <div className="details-content">
                     <h2 className="details-subtitle">Related movies</h2>
+                    {/* https://developers.themoviedb.org/3/movies/get-movie-lists
+                        https://developers.themoviedb.org/3/movies/get-similar-movies
+                    */}
                 </div>
 
             </article>
             )
         }
-        </>
-    )
+        </div>
+    );
 }
 
 export default Details;

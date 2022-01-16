@@ -1,12 +1,3 @@
-@media only screen and (min-width: 600px) {
-  body {
-    // background-color: lightblue;
-
-    img{ max-width: 50%; }
-    h2{ font-size: 24em;}
-  }
-}
-
 @import './_App.scss';
 @import './_nav.scss';
 @import './_lists.scss';
@@ -15,7 +6,7 @@
 @import './_head-footer.scss';
 
 body {
-  margin: 0;
+ 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

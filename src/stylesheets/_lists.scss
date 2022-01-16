@@ -1,11 +1,44 @@
 .lists-cards-container {
     display: flex;
     flex-direction: column;
-    background-color: yellow;
-}
-.lists-categories{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;    
 }
 
+.lists-categories{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;  
+  padding: 1em;  
+}
+
+.lists-but-pag-container{
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    flex-direction: row;
+    margin:0.8em;
+    font-size: 0.8em;  
+}
+.lists-cat {
+  padding: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}  
+
+.lists-but {
+  display: flex;
+  color:#ff8f71;
+  border:none;
+  text-transform: uppercase;
+  background-color: #15141f;
+  &:hover{
+    text-decoration-line: underline;
+  }
+} 
+
+form {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.8em;
+}

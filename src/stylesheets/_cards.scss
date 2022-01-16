@@ -1,18 +1,68 @@
 .card-container {
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 3em;
-    column-rule: 1px solid rgb(75, 70, 74);
-    // column-width: 5em;
-    
-    & .card-content h1 {
-        position: absolute;
-        color:black;
-        font-size: 1em; 
-        background-color: rgba(221, 221, 221, 0.767);
-        max-width:10em;
-        margin: 1em;
-    }            
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  column-rule: 1px solid rgb(75, 70, 74);
+  & .card-content {
+    display: flex;
+    & img {
+      display: flex;
+      border-radius: 20px;
+      margin: 0.2em;
+      max-width: 100%;
+      flex:auto;
+    }
+    & h1{
+      display:flex;
+      flex-wrap: nowrap;
+      position: absolute;
+      width:12em;
+      margin:0.5em;
+      margin-top: 4em;
+      color:black;
+      background-color: rgba(221, 221, 221, 0.767);
+    }
+  &  .cards-vote-average{
+     display: flex;
+     position: absolute;
+     align-items: flex-start;
+     flex-wrap: wrap;
+     flex-direction: row;
+  }
+  & i { 
+    display: flex;
+    font-weight: bold;
+    position: absolute;
+  }
+  & p{
+    font-weight: bold;
+    background-color: black;
+    color:white;
+    margin-top: 30px;
+    margin-left: 15px;
+    padding-left: 10px;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 500px) {
+  .card-content {
+    & h1{
+      font-size: 1em; 
+      width:3em;
+    }
+  } 
+}
+
+@media only screen and (max-width: 500px) {   
+ 
+.card-content {
+    width: 45%;     
+    & h1{
+      font-size: 0.7em; 
+      width:3em;
+    } 
+  }
 }
