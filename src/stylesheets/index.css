@@ -13,9 +13,10 @@ nav {
   width: 100%;
   height: 4em;
   padding-bottom: 2em;
-  padding-top: 0em;
+  margin-top: 10em;
   position: fixed;
   bottom: 0;
+  z-index: 0;
 }
 nav li, nav a, nav a :visited {
   color: #ff8f71;
@@ -31,6 +32,8 @@ nav a {
 .lists-cards-container {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10rem;
+  padding-bottom: 10rem;
 }
 
 .lists-categories {
@@ -45,8 +48,8 @@ nav a {
   align-content: space-around;
   justify-content: center;
   flex-direction: row;
-  margin: 0.8em;
   font-size: 0.8em;
+  padding-bottom: 7rem;
 }
 
 .lists-cat {
@@ -203,6 +206,7 @@ form {
 .details-body {
   display: flex;
   justify-content: center;
+  margin-bottom: 7rem;
 }
 
 .details-play-button {

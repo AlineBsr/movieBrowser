@@ -1,7 +1,9 @@
 .lists-cards-container {
     display: flex;
     flex-direction: column;
-}
+    margin-bottom: 10rem;
+    padding-bottom: 10rem;
+  }
 
 .lists-categories{
   display: flex;
@@ -15,9 +17,10 @@
     align-content: space-around;
     justify-content: center;
     flex-direction: row;
-    margin:0.8em;
     font-size: 0.8em;  
+    padding-bottom: 7rem;
 }
+  
 .lists-cat {
   padding: auto;
   justify-content: center;

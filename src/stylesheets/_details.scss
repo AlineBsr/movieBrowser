@@ -45,7 +45,6 @@
   }   
 }
 
-
 .video-container{  
   width:50%; 
   & .video-responsive {
@@ -63,11 +62,10 @@
     position: absolute;
   }
 }
-
-
 .details-body{
   display: flex;
   justify-content: center;
+  margin-bottom: 7rem;
 }
 .details-play-button {
       display: flex;
@@ -75,8 +73,6 @@
       display: inline;
       background-color: yellow;
 }
-
-
 
 @media only screen and (min-width: 500px) {
 

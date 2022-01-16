@@ -9,7 +9,6 @@ import Profil   from "./components/Profil";
 import Footer   from "./components/Footer";
 
 function App() {
-  const { id } = useParams();
 
 return (  
   <>
@@ -25,13 +24,13 @@ return (
         element={ <Lists type="movie" lang="en-US"  /> }
       />
       <Route  exact path="/movie/:id" 
-        element={ <Details type="movie" lang="en-US" id={id} /> }
+        element={ <Details type="movie" lang="en-US" /> }
       />
       <Route  exact path="/tv" 
         element={ <Lists  type="tv"  lang="en-US"/> } 
       />
       <Route  exact path="/tv/:id" 
-        element={ <Details type="tv" lang="en-US" id={id} /> } 
+        element={ <Details type="tv" lang="en-US" /> } 
       /> 
     </Routes>
     
