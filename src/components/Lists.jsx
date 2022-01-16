@@ -1,6 +1,5 @@
 import React, {  useState, useEffect  } from "react";
 import Header from "./Header";
-// import Search from "./Search";
 import Cards from "./Cards";
 
 const Lists = ( { type, lang } ) => { 
@@ -44,6 +43,7 @@ const Lists = ( { type, lang } ) => {
     getSearchResult();
     setSearch("");
   }
+  
   const getSearchResult = () => {
     const url = `https://api.themoviedb.org/3/search/${type}?api_key=${process.env.REACT_APP_APIKEY}&query=${search}`;
     search !== "" && 
@@ -53,7 +53,6 @@ const Lists = ( { type, lang } ) => {
     }   
 
   const handleButtonPrevNextClick = (event) => { 
-    console.log(event.target.name);
     event.target.name === "next" && setPage(page + 1);
     event.target.name === "prev" && setPage(page - 1);
    };
@@ -69,7 +68,6 @@ const Lists = ( { type, lang } ) => {
       <Header />
       <h1>Find Movies, Tv series, and more....</h1>
       { /* set list of the categories of type selected */ }
-      {/* <Search type={`${type}`} lang={`${lang}`} /> */}
       <form onSubmit={handleSearchSubmit}>
         <label htmlFor="search"><i className="fas fa-search"></i></label>
         { search !== undefined && getSearchResult() }
@@ -132,23 +130,23 @@ const Lists = ( { type, lang } ) => {
       { /* display cards */ }
       <Cards type={ type } lang={lang} page={page} datas={listVideos} /> 
 
-      { /* set buttons pagination  */ }
+      {/* // set buttons pagination */}
       <div className="lists-but-pag-container">
-        { page > 1 && (
+        {page > 1 && (
           <button
-            className=" but-pagination"
+            className="lists-but"
             name="prev"
-            onClick={ (event) => handleButtonPrevNextClick(event) }
+            onClick={(event) => handleButtonPrevNextClick(event)}
           >
-            { `<< PREV ` }
+            {`<< PREV `}
           </button>
-        ) }
+        )}
         <button
-          className="but-pagination"
+          className="lists-but"
           name="next"
-          onClick={ (event) => handleButtonPrevNextClick(event) }
+          onClick={(event) => handleButtonPrevNextClick(event)}
         >
-          { `NEXT >> ` }
+          {`NEXT >> `}
         </button>
       </div>
     </>

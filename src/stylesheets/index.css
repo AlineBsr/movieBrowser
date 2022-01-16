@@ -3,6 +3,9 @@ body {
   color: white;
   width: 100%;
 }
+body h1 {
+  text-align: center;
+}
 
 nav {
   display: flex;
@@ -25,8 +28,8 @@ nav li, nav a, nav a :visited {
 nav a {
   align-items: center;
   justify-content: space-around;
-  width: 2em;
-  height: 2em;
+  width: 2.3em;
+  height: 2.5em;
 }
 
 .lists-cards-container {

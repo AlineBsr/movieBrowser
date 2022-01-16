@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useParams } from "react-router";
 
 import Nav      from "./components/Nav";        // nav home - disc - profil 
 import Home     from "./components/Home";       // tendances (movie / tv ...?)
@@ -15,7 +14,7 @@ return (
   <Router>
     < Routes>
       <Route  exact path="/" 
-        element={ <Home type="movie" lang="en-US" /> } 
+        element={ <Home lang="en-US" /> } 
       /> 
       <Route  exact path="/profil"
         element={ <Profil username="TEST" /> }
