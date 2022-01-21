@@ -1,6 +1,7 @@
 import React, {  useState, useEffect  } from "react";
 import Header from "./Header";
 import Cards from "./Cards";
+import Loader from "./Loader";
 
 const Lists = ( { type, lang } ) => { 
   // videos
@@ -17,21 +18,25 @@ const Lists = ( { type, lang } ) => {
   // search
   const [search, setSearch] = useState("");
 
+  const  [isLoading, setIsLoading] = useState();
+
   const getMovies = () => { 
     categSelected === undefined ? setCateg("") : setCateg(categ);
     const url = `https://api.themoviedb.org/3/discover/${ type }?api_key=${ process.env.REACT_APP_APIKEY }&language=${ lang }&with_genres=${ categSelected }&page=${ page }`;
+    setIsLoading(true);
     fetch(url)
-      .then((err) => err.json())
-      .then((data) =>
-        data.errors ? console.error("error") : setListVideos(data.results)
-      );
-   };
+      .then( response => response.json() )
+      .then( data => setListVideos(data.results) )
+      .catch( errors => { console.error(errors)}  )
+      .finally( () => setIsLoading(false) )
+    };
 
   const getCategories = () => { 
     const url = `https://api.themoviedb.org/3/genre/${ type }/list?api_key=${ process.env.REACT_APP_APIKEY }&language=${ lang }`;
     fetch(url)
-      .then((err) => err.json())
-      .then((data) => (data.error ? console.error("error") : setCateg(data)));
+      .then( response  => response.json() )
+      .then( data => setCateg(data) )
+      .catch( error => console.error(error) )
    };
 
   const handleSearchChange = (e) => {
@@ -47,9 +52,12 @@ const Lists = ( { type, lang } ) => {
   const getSearchResult = () => {
     const url = `https://api.themoviedb.org/3/search/${type}?api_key=${process.env.REACT_APP_APIKEY}&query=${search}`;
     search !== "" && 
+    // setIsLoading(true)
     fetch(url)
-        .then( (err) => err.json() )
-        .then( (data) => { data.errors ? console.error("error") : setListVideos(data.results) } )
+        .then( response  => response.json() )
+        .then( data =>  setListVideos(data.results) )
+        .catch( error => console.error(error) )
+        // .finally( () => { setIsLoading(false) } )
     }   
 
   const handleButtonPrevNextClick = (event) => { 
@@ -128,7 +136,9 @@ const Lists = ( { type, lang } ) => {
       </div>
 
       { /* display cards */ }
-      <Cards type={ type } lang={lang} page={page} datas={listVideos} /> 
+
+      { isLoading === true ? <Loader /> : <Cards type={ type } lang={lang} page={page} datas={listVideos} />  }
+      
 
       {/* // set buttons pagination */}
       <div className="lists-but-pag-container">

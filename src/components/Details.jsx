@@ -11,8 +11,9 @@ const Details = (props) => {
     const getDetails = () => {
         const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=${lang}&append_to_response=videos,images`;
         fetch(url)
-        .then( (err) => err.json() )
-        .then( (data) => data.errors ? console.error("error") : setDetails( [data] )
+        .then( response => response.json() )
+        .then( data =>  setDetails( [data] )
+        .catch( error => console.error(error) )
     )}
 
     const displayTrailer = () => {
